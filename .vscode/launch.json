@@ -1,0 +1,65 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "ng serve",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200",
+      "webroot": "${workspaceFolder}/frontend"
+    },
+    {
+      "name": "ng test",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:9876/debug.html",
+      "webRoot": "${workspaceFolder}/frontend",
+      "sourceMapPathOverrides": {
+        "./src/*": "${workspaceFolder}/frontend/src/*"
+      }
+    },
+    {
+      "name": "ng e2e",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/frontend/node_modules/protractor/bin/protractor",
+      "args": [
+        "${workspaceFolder}/frontend/e2e/protractor.conf.js"
+      ]
+    },
+    {
+      "name": "Node: Nodemon",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}/server/server.js",
+      "restart": true,
+      // "console": "integratedTerminal",
+      // "internalConsoleOptions": "neverOpen",
+      "env": {
+        "port": "5000",
+      }
+    },
+    {
+      "name": "Node",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+      "program": "${workspaceFolder}/server/server.js",
+      "envFile": "${workspaceFolder}/.env"
+      // "env": {
+      //   "port": "5000",
+      // }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Compound",
+      "configurations": [
+        "Node: Nodemon",
+        "ng serve"
+      ]
+    }
+  ]
+}
